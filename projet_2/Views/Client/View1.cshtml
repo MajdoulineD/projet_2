@@ -1,0 +1,55 @@
+﻿@model projet_2.Models.Article
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="~/Assets/js/jquery-3.2.1.min.js"></script>
+    <script src="~/Assets/js/bootstrap.min.js"></script>
+    <link href="~/Assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Assets/css/css_modifie_1.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <table class="table table-striped table-hover ">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Designation)
+                    </th>
+                    <th>
+                        Prix unitaire en DH
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.photo)
+                    </th>
+                    <th>
+                       Stock
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => model.Designation)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.PrixU)
+                        </td>
+                        <td>
+                            <img src="@Url.Content(Model.photo)" alt="Image" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.stock)
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        </div>
+</body>
+</html>
+<p>
+    <span class="glyphicon glyphicon-arrow-left"></span>
+    @Html.ActionLink("Back to List", "ConsulterCtlg")
+</p>

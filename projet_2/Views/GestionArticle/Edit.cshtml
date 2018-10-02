@@ -1,0 +1,66 @@
+﻿@model projet_2.Models.Article
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Article</legend>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Designation)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Designation)
+            @Html.ValidationMessageFor(model => model.Designation)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PrixU)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PrixU)
+            @Html.ValidationMessageFor(model => model.PrixU)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.stock)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.stock)
+            @Html.ValidationMessageFor(model => model.stock)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.photo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.photo)
+            @Html.ValidationMessageFor(model => model.photo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RefCat, "Categorie")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("RefCat", String.Empty)
+            @Html.ValidationMessageFor(model => model.RefCat)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

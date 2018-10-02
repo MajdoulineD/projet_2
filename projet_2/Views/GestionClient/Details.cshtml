@@ -1,0 +1,78 @@
+﻿@model projet_2.Models.Client
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Client</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NumClient)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NumClient)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.login)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.login)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MotPasse)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MotPasse)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.retap_mdp)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.retap_mdp)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Nom)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nom)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Prenom)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Prenom)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Ville)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Ville)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.tel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.tel)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

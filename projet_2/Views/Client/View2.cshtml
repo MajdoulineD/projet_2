@@ -1,0 +1,64 @@
+﻿@model projet_2.Models.Commande
+
+@{
+    ViewBag.Title = "View2";
+}
+
+<h2>View2</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Commande</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NumCmd)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NumCmd)
+            @Html.ValidationMessageFor(model => model.NumCmd)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateCmd)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateCmd)
+            @Html.ValidationMessageFor(model => model.DateCmd)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NumClient)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NumClient)
+            @Html.ValidationMessageFor(model => model.NumClient)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NumArticle)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NumArticle)
+            @Html.ValidationMessageFor(model => model.NumArticle)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.QteArticle)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.QteArticle)
+            @Html.ValidationMessageFor(model => model.QteArticle)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

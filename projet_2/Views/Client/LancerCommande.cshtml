@@ -1,0 +1,108 @@
+﻿@model projet_2.Models.MaCommande
+
+@{
+    ViewBag.Title = "LancerCommande";
+}
+<script src="~/Assets/js/jquery-3.2.1.min.js"></script>
+
+<script>
+    $(function () {
+        $("#CategId").change(function () {
+            $.get("/Client/GetArticleById", { ID: $("#CategId").val() }, function (data) {
+                $("#St").empty();
+                $("#St").append("    <option> choissisez un article </option>")
+                $.each(data, function (index, row) {
+                    $("#St").append("    <option value='" + row.NumArticle + "'>" + row.Designation + "</option>")
+                });
+            })
+        });
+    });
+</script>
+<script>
+    $(function () {
+        $("#St").change(function () {
+            $.get("/Client/GetStockById", { ID: $("#St").val() }, function (data) {
+                $("#tbx").val('');
+                $("#tbx").val(data)
+            })
+        });
+    });
+</script>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="~/Assets/js/jquery-3.2.1.min.js"></script>
+    <link href="~/Assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Assets/css/css_modifie_1.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+    <h2 class="text-primary">Lancer une commande</h2>
+    @using (Html.BeginForm("TraiterCommande", "Client", FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+        <div class="form-group">
+            <label class="control-label col-sm-4" for="CategId">Choisir une categorie:</label>
+            <div class="col-sm-8">
+                <select id="CategId" class="form-control">
+                    <option value="">Choisissez une categorie</option>
+                    @foreach (var item in ViewBag.Listcateg)
+                                {
+                                    <option value="@item.RefCat">@item.NomCat</option>
+                                }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4" for="St">Choisir une article</label>
+            <div class="col-sm-8">
+                <select id="St" class="form-control">
+                    <option value="value">Choisissez un article</option>
+                </select>
+            </div>
+        </div>
+    <div class="form-group">
+        <label class="control-label col-sm-4" for="tbx">Stock :</label>
+        <div class="col-sm-8">
+            @Html.TextBoxFor(m => m.RefCat, new { @class = "form-control", type = "number", name = "tbx", id = "tbx",@readonly= "readonly" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-4" for="qtt">Quantite :</label>
+        <div class="col-sm-8">
+            @Html.TextBoxFor(m => m.qtt, new { @class = "form-control", type = "number", name = "qtt", id = "qtt" })
+            <br /><br /><br />
+            <h4 class="text text-danger"></h4>
+            @ViewBag.warn
+        </div>
+    </div>
+
+    <input type="submit" value="Commander" class="btn btn-primary btn-block" />
+                }
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-9">
+                <br /><br /><br /><br />
+                <a class="btn btn-warning btn-lg" href="~/Client/Index">
+                    <span class="glyphicon glyphicon-arrow-left"></span> Accueil
+                </a>
+                <a class="btn btn-primary btn-lg" href="~/Client/SeDeconnecter">
+                    <span class="glyphicon glyphicon-log-out"></span> Se deconnecter
+                </a>
+            </div>
+        </div>
+        </div>
+</body>
+</html>
+
+        
+
+           
+            
+        
+       

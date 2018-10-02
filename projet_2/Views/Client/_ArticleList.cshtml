@@ -1,0 +1,38 @@
+﻿@model IEnumerable<projet_2.Models.Article>
+
+<table class="table table-striped table-hover ">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Designation)
+            </th>
+            <th>
+               Prix unitaire en DH
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.photo)
+            </th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Designation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrixU)
+                </td>
+                <td>
+                    <img src="@Url.Content(item.photo)" alt="Image" /> 
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "AfficherDetailles", "Client", new { NumArticle = item.NumArticle }, null)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>@ViewBag.Title</title>
+    <script src="~/Assets/js/jquery-3.2.1.min.js"></script>
+    <script src="~/Assets/js/bootstrap.min.js"></script>
+    <link href="~/Assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Assets/css/css_modifie_1.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <br />
+            <br />
+            <br />
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="jumbotron">
+                    <h1>
+                        <label>Bienvenu Admin</label>
+                    </h1>
+                    <p class="subnav">
+                        <a class="btn btn-success" href="~/GestionClient/Index">Gestion des Clients</a>
+                        <a class="btn btn-info" href="~/GestionArticle/Index">Gestion des Article</a>
+                        <a class="btn btn-warning" href="~/GestionCategorie/Index">Gestion des Categories</a>
+                    </p>
+                </div>
+                <br /><br /><br /><br />
+                <div class="row">
+                    <div class="col-md-7"></div>
+                    <div class="col-md-5">
+                        <a href="~/Client/seDeconnecter" class="btn btn-primary btn-lg">
+                            <span class="glyphicon glyphicon-log-out"></span> Se deconnecter
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</body>
+</html>
+

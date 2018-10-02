@@ -1,0 +1,79 @@
+﻿@model projet_2.Models.Client
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Client</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.login)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.login)
+            @Html.ValidationMessageFor(model => model.login)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MotPasse)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MotPasse)
+            @Html.ValidationMessageFor(model => model.MotPasse)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nom)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Nom)
+            @Html.ValidationMessageFor(model => model.Nom)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Prenom)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Prenom)
+            @Html.ValidationMessageFor(model => model.Prenom)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Ville)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Ville)
+            @Html.ValidationMessageFor(model => model.Ville)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.tel)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.tel)
+            @Html.ValidationMessageFor(model => model.tel)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

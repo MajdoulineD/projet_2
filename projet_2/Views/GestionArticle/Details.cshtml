@@ -1,0 +1,57 @@
+﻿@model projet_2.Models.Article
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Article</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NumArticle)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NumArticle)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Designation)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Designation)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PrixU)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PrixU)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.stock)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.stock)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.photo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.photo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Categorie.NomCat)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Categorie.NomCat)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

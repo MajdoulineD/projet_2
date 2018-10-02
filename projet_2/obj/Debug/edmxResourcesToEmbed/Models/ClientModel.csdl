@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="projetMvcModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="NumArticle" />
+    </Key>
+    <Property Name="NumArticle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PrixU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="stock" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="photo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RefCat" Type="Int32" />
+    <NavigationProperty Name="Commandes" Relationship="Self.fk_numArticle" FromRole="Article" ToRole="Commande" />
+    <NavigationProperty Name="Categorie" Relationship="Self.fk_refCat" FromRole="Article" ToRole="Categorie" />
+  </EntityType>
+  <EntityType Name="Categorie">
+    <Key>
+      <PropertyRef Name="RefCat" />
+    </Key>
+    <Property Name="RefCat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NomCat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Articles" Relationship="Self.fk_refCat" FromRole="Categorie" ToRole="Article" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="NumClient" />
+    </Key>
+    <Property Name="NumClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MotPasse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ville" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Commandes" Relationship="Self.fk_numClient" FromRole="Client" ToRole="Commande" />
+  </EntityType>
+  <EntityType Name="Commande">
+    <Key>
+      <PropertyRef Name="NumCmd" />
+    </Key>
+    <Property Name="NumCmd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateCmd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NumClient" Type="Int32" />
+    <Property Name="NumArticle" Type="Int32" />
+    <Property Name="QteArticle" Type="Int32" />
+    <NavigationProperty Name="Article" Relationship="Self.fk_numArticle" FromRole="Commande" ToRole="Article" />
+    <NavigationProperty Name="Client" Relationship="Self.fk_numClient" FromRole="Commande" ToRole="Client" />
+  </EntityType>
+  <Association Name="fk_numArticle">
+    <End Role="Article" Type="Self.Article" Multiplicity="0..1" />
+    <End Role="Commande" Type="Self.Commande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Article">
+        <PropertyRef Name="NumArticle" />
+      </Principal>
+      <Dependent Role="Commande">
+        <PropertyRef Name="NumArticle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_refCat">
+    <End Role="Categorie" Type="Self.Categorie" Multiplicity="0..1" />
+    <End Role="Article" Type="Self.Article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorie">
+        <PropertyRef Name="RefCat" />
+      </Principal>
+      <Dependent Role="Article">
+        <PropertyRef Name="RefCat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_numClient">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="Commande" Type="Self.Commande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="NumClient" />
+      </Principal>
+      <Dependent Role="Commande">
+        <PropertyRef Name="NumClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="projetMvcEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Articles" EntityType="Self.Article" />
+    <EntitySet Name="Categories" EntityType="Self.Categorie" />
+    <EntitySet Name="Clients" EntityType="Self.Client" />
+    <EntitySet Name="Commandes" EntityType="Self.Commande" />
+    <AssociationSet Name="fk_numArticle" Association="Self.fk_numArticle">
+      <End Role="Article" EntitySet="Articles" />
+      <End Role="Commande" EntitySet="Commandes" />
+    </AssociationSet>
+    <AssociationSet Name="fk_refCat" Association="Self.fk_refCat">
+      <End Role="Categorie" EntitySet="Categories" />
+      <End Role="Article" EntitySet="Articles" />
+    </AssociationSet>
+    <AssociationSet Name="fk_numClient" Association="Self.fk_numClient">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="Commande" EntitySet="Commandes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

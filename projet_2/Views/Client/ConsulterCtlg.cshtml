@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "ConsulterCtlg";
+}
+@model projet_2.Models.Categorie
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>@ViewBag.Title</title>
+    <script src="~/Assets/js/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Assets/js/bootstrap.min.js"></script>
+    <link href="~/Assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Assets/css/css_modifie_1.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <h3>Consulter les catalogues</h3>
+                    @using (Ajax.BeginForm("afficherArticles", "Client", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "divTest", InsertionMode = InsertionMode.Replace, }))
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.RefCat, "Choisir une categorie :", new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-8">
+                                @Html.DropDownListFor(m => m.RefCat, new SelectList(Model.ListCategorie, "RefCat", "NomCat"), new { @class = "form-control", onchange = "$(this.form).submit();" })
+                            </div>
+                        </div>
+                     }
+                <div id="divTest">
+
+                </div>
+                        </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-9">
+                <br /><br /><br /><br />
+                <a class="btn btn-warning btn-lg" href="~/Client/Index">
+                    <span class="glyphicon glyphicon-arrow-left"></span> Accueil
+                </a>
+                <a class="btn btn-primary btn-lg" href="~/Client/SeDeconnecter">
+                    <span class="glyphicon glyphicon-log-out"></span> Se deconnecter
+                </a>
+            </div>
+        </div>
+   </div>
+</body>
+</html>

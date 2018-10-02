@@ -1,0 +1,33 @@
+﻿@model projet_2.Models.Categorie
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Categorie</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NomCat)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NomCat)
+            @Html.ValidationMessageFor(model => model.NomCat)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+

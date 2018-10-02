@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="projetMvcModelStoreContainer" CdmEntityContainer="projetMvcEntities">
+    <EntitySetMapping Name="Articles">
+      <EntityTypeMapping TypeName="projetMvcModel.Article">
+        <MappingFragment StoreEntitySet="Article">
+          <ScalarProperty Name="NumArticle" ColumnName="NumArticle" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="PrixU" ColumnName="PrixU" />
+          <ScalarProperty Name="stock" ColumnName="stock" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="RefCat" ColumnName="RefCat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="projetMvcModel.Categorie">
+        <MappingFragment StoreEntitySet="Categorie">
+          <ScalarProperty Name="RefCat" ColumnName="RefCat" />
+          <ScalarProperty Name="NomCat" ColumnName="NomCat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="projetMvcModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="NumClient" ColumnName="NumClient" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="MotPasse" ColumnName="MotPasse" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Ville" ColumnName="Ville" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Commandes">
+      <EntityTypeMapping TypeName="projetMvcModel.Commande">
+        <MappingFragment StoreEntitySet="Commande">
+          <ScalarProperty Name="NumCmd" ColumnName="NumCmd" />
+          <ScalarProperty Name="DateCmd" ColumnName="DateCmd" />
+          <ScalarProperty Name="NumClient" ColumnName="NumClient" />
+          <ScalarProperty Name="NumArticle" ColumnName="NumArticle" />
+          <ScalarProperty Name="QteArticle" ColumnName="QteArticle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

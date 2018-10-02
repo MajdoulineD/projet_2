@@ -1,0 +1,82 @@
+﻿@model IEnumerable<projet_2.Models.MonPannier>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="~/Assets/js/jquery-3.2.1.min.js"></script>
+    <script src="~/Assets/js/bootstrap.min.js"></script>
+    <link href="~/Assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Assets/css/css_modifie_1.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <h3>Mon pannier</h3>
+                <br /><br />
+                <table class="table table-striped table-hover ">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Designation)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PrixU)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.photo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DateCmd)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.QteArticle)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Designation)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PrixU)
+                                </td>
+                                <td>
+                                    <img src="@Url.Content(item.photo)" alt="Image" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateCmd)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.QteArticle)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+</table>
+
+               
+                <h3>@ViewBag.MontantTotal</h3> 
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-9">
+                <br /><br /><br /><br />
+                <a class="btn btn-warning btn-lg" href="~/Client/Index">
+                    <span class="glyphicon glyphicon-arrow-left"></span> Accueil
+                </a>
+                <a class="btn btn-primary btn-lg" href="~/Client/SeDeconnecter">
+                    <span class="glyphicon glyphicon-log-out"></span> Se deconnecter
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
